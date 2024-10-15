@@ -1,141 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordmap.com - Simplified Map Embedding | Embedding di Mappe Semplificato</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoordMap - OpenStreetMap</title>
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Stile per il contenitore della mappa -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 4px;
-        }
-        .example {
-            background-color: #e9f7ef;
-            border: 1px solid #27ae60;
-            border-radius: 5px;
-            padding: 15px;
-            margin-top: 20px;
-        }
-        .language-section {
-            margin-bottom: 40px;
-        }
-        .language-nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .language-nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-        .contact {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-        }
-        .separator {
-            border-top: 1px solid #ddd;
-            margin: 40px 0;
-        }
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
     </style>
-</head>
-<body>
-    <div class="language-nav">
-        <a href="#english">English</a> | <a href="#italiano">Italiano</a>
-    </div>
+  </head>
+  <body>
+    <div id="map"></div>
 
-    <div id="english" class="language-section">
-        <h1>Coordmap.com</h1>
-        <p>Coordmap.com is a map embedding service that simplifies the integration of interactive maps into websites. You can add custom maps using a simple iframe.</p>
+    <!-- Leaflet JavaScript -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
 
-        <h2>How It Works</h2>
-        <p>The process is simple:</p>
-        <ol>
-            <li>Choose the map coordinates (latitude and longitude)</li>
-            <li>Insert the coordinates into the special URL</li>
-            <li>Copy and paste the iframe code into your site</li>
-        </ol>
-
-        <h2>Usage Example</h2>
-        <p>To embed a map centered on latitude 41.9028 and longitude 12.4964 (Rome), use this code:</p>
-        <div class="example">
-            <code>
-                &lt;iframe src="https://coordmap.com/openstreetmap/?coord=41.9028,12.4964" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;
-            </code>
-        </div>
-
-        <h2>Technologies Used</h2>
-        <ul>
-            <li><a href="https://www.openstreetmap.org/">OpenStreetMap</a></li>
-            <li><a href="https://leafletjs.com/">Leaflet.js</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML5</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
-        </ul>
-
-        <h2>Features</h2>
-        <ul>
-            <li>Easy to use: simple iframe implementation</li>
-            <li>Customizable: ability to specify coordinates</li>
-            <li>Lightweight: fast loading without slowing down your site</li>
-            <li>Responsive: adapts to screens of all sizes</li>
-        </ul>
-    </div>
-
-    <div class="separator"></div>
-
-    <div id="italiano" class="language-section">
-        <h1>Coordmap.com</h1>
-        <p>Coordmap.com è un servizio di embedding di mappe che semplifica l'integrazione di mappe interattive nei siti web. Puoi aggiungere mappe personalizzate utilizzando un semplice iframe.</p>
-
-        <h2>Come Funziona</h2>
-        <p>Il processo è semplice:</p>
-        <ol>
-            <li>Scegli le coordinate della mappa (latitudine e longitudine)</li>
-            <li>Inserisci le coordinate nell'URL speciale</li>
-            <li>Copia e incolla il codice iframe nel tuo sito</li>
-        </ol>
-
-        <h2>Esempio di Utilizzo</h2>
-        <p>Per incorporare una mappa centrata su latitudine 41.9028 e longitudine 12.4964 (Roma), usa questo codice:</p>
-        <div class="example">
-            <code>
-                &lt;iframe src="https://coordmap.com/openstreetmap/?coord=41.9028,12.4964" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;
-            </code>
-        </div>
-
-        <h2>Tecnologie Utilizzate</h2>
-        <ul>
-            <li><a href="https://www.openstreetmap.org/">OpenStreetMap</a></li>
-            <li><a href="https://leafletjs.com/">Leaflet.js</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML5</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
-        </ul>
-
-        <h2>Caratteristiche</h2>
-        <ul>
-            <li>Facile da usare: utilizzo di un semplice iframe</li>
-            <li>Personalizzabile: possibilità di specificare le coordinate</li>
-            <li>Leggero: caricamento rapido senza rallentare il sito</li>
-            <li>Responsive: adattamento a schermi di tutte le dimensioni</li>
-        </ul>
-    </div>
-
-    <div class="contact">
-        <p>Contact: <a href="https://twitter.com/hi1zkn" target="_blank">hi1zkn on Twitter</a></p>
-    </div>
-</body>
+    <!-- Il tuo script principale -->
+    <script type="module" src="/js/main.js"></script>
+  </body>
 </html>
