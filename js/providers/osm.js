@@ -16,14 +16,13 @@ export default function launchMap(coords) {
 
 function addElements() {
   document.title = "CoordMap - OpenStreetMap";
-  console.log("Sono dentro addelements");
 }
 
 function initializeMap(config = mapCoord) {
   const map = L.map("map").setView([config.lat, config.long], config.zoom);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Coordmap.com api',
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | map.zkn.app api',
   }).addTo(map);
   let marker = L.marker([config.lat, config.long]).addTo(map);
   marker
