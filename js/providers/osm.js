@@ -2,7 +2,9 @@
 //  OpenStreetMap
 //
 
-export function launchPage(coords) {
+
+//Funzione per inizializzare la mappa
+export default function launchMap(coords) {
   addElements();
   const mapCoord = {
     lat: coords.lat,

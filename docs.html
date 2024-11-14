@@ -1,179 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Coordmap.com - Simplified Map Embedding | Embedding di Mappe Semplificato
-    </title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      h1,
-      h2 {
-        color: #2c3e50;
-      }
-      code {
-        background-color: #f4f4f4;
-        padding: 2px 4px;
-        border-radius: 4px;
-      }
-      .example {
-        background-color: #e9f7ef;
-        border: 1px solid #27ae60;
-        border-radius: 5px;
-        padding: 15px;
-        margin-top: 20px;
-      }
-      .language-section {
-        margin-bottom: 40px;
-      }
-      .language-nav {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      .language-nav a {
-        margin: 0 10px;
-        text-decoration: none;
-        color: #2c3e50;
-        font-weight: bold;
-      }
-      .contact {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #ddd;
-      }
-      .separator {
-        border-top: 1px solid #ddd;
-        margin: 40px 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="language-nav">
-      <a href="#english">English</a> | <a href="#italiano">Italiano</a>
+    <title>Coordmap - Simple Map Embedding Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.getElementById(lang).classList.remove('hidden');
+            
+            // Update active tab
+            document.querySelectorAll('.lang-tab').forEach(el => {
+                el.classList.remove('bg-gray-800', 'text-white');
+                el.classList.add('bg-gray-100', 'text-gray-800');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.remove('bg-gray-100', 'text-gray-800');
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('bg-gray-800', 'text-white');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-gray-900">Coordmap</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+                        <button onclick="switchLang('en')" data-lang="en" class="lang-tab px-4 py-2 rounded-md bg-gray-800 text-white text-sm font-medium">EN</button>
+                        <button onclick="switchLang('it')" data-lang="it" class="lang-tab px-4 py-2 rounded-md bg-gray-100 text-gray-800 text-sm font-medium">IT</button>
+                    </div>
+                    <a href="https://github.com/1zkn/coordmap" class="text-gray-600 hover:text-gray-900">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- English Content -->
+    <div id="en" class="lang-content">
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Simple Map Embedding</h1>
+                <p class="text-xl text-gray-600">Embed maps anywhere with a simple URL</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-semibold mb-4">Quick Usage</h2>
+                    <div class="bg-gray-50 p-4 rounded-md mb-4">
+                        <code class="text-sm text-gray-800 break-all">
+                            coordmap.com/o/41.9028,12.4964
+                        </code>
+                    </div>
+                    <p class="text-gray-600">Just add coordinates to the URL and get an instant map view</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-semibold mb-4">Embed in Website</h2>
+                    <div class="bg-gray-50 p-4 rounded-md mb-4">
+                        <code class="text-sm text-gray-800 break-all">
+                            &lt;iframe src="https://coordmap.com/o/41.9028,12.4964" width="600" height="450" allowfullscreen loading="lazy"&gt;&lt;/iframe&gt;
+                        </code>
+                    </div>
+                    <p class="text-gray-600">Simple iframe implementation for any website</p>
+                </div>
+            </div>
+
+            <div class="mb-16">
+                <h2 class="text-2xl font-semibold mb-6">Use Cases</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="font-semibold mb-2">Quick Map Links</h3>
+                        <p class="text-gray-600">Perfect for sharing locations in chats, emails, or documentation</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="font-semibold mb-2">System Integration</h3>
+                        <p class="text-gray-600">Ideal for IP geolocation tools and network diagnostics</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="font-semibold mb-2">Website Embedding</h3>
+                        <p class="text-gray-600">Lightweight alternative to complex mapping solutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-sm mb-16">
+                <h2 class="text-2xl font-semibold mb-6">Features</h2>
+                <ul class="grid md:grid-cols-2 gap-4">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        No API keys required
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Instant deployment
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Lightweight and fast
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Mobile responsive
+                    </li>
+                </ul>
+            </div>
+        </main>
     </div>
 
-    <div id="english" class="language-section">
-      <h1>Coordmap.com</h1>
-      <p>
-        Coordmap.com is a map embedding service that simplifies the integration
-        of interactive maps into websites. You can add custom maps using a
-        simple iframe.
-      </p>
+    <!-- Italian Content -->
+    <div id="it" class="lang-content hidden">
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Embedding di Mappe Semplificato</h1>
+                <p class="text-xl text-gray-600">Incorpora mappe ovunque con un semplice URL</p>
+            </div>
 
-      <h2>How It Works</h2>
-      <p>The process is simple:</p>
-      <ol>
-        <li>Choose the map coordinates (latitude and longitude)</li>
-        <li>Insert the coordinates into the special URL</li>
-        <li>Copy and paste the iframe code into your site</li>
-      </ol>
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-semibold mb-4">Uso Rapido</h2>
+                    <div class="bg-gray-50 p-4 rounded-md mb-4">
+                        <code class="text-sm text-gray-800 break-all">
+                            coordmap.com/o/41.9028,12.4964
+                        </code>
+                    </div>
+                    <p class="text-gray-600">Aggiungi semplicemente le coordinate all'URL per ottenere una vista della mappa</p>
+                </div>
 
-      <h2>Usage Example</h2>
-      <p>
-        To embed a map centered on latitude 41.9028 and longitude 12.4964
-        (Rome), use this code:
-      </p>
-      <div class="example">
-        <code>
-          &lt;iframe src="https://coordmap.com/o/41.9028,12.4964" width="600"
-          height="450" style="border:0;" allowfullscreen=""
-          loading="lazy"&gt;&lt;/iframe&gt;
-        </code>
-      </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-semibold mb-4">Incorpora nel Sito Web</h2>
+                    <div class="bg-gray-50 p-4 rounded-md mb-4">
+                        <code class="text-sm text-gray-800 break-all">
+                            &lt;iframe src="https://coordmap.com/o/41.9028,12.4964" width="600" height="450" allowfullscreen loading="lazy"&gt;&lt;/iframe&gt;
+                        </code>
+                    </div>
+                    <p class="text-gray-600">Semplice implementazione iframe per qualsiasi sito web</p>
+                </div>
+            </div>
 
-      <h2>Technologies Used</h2>
-      <ul>
-        <li><a href="https://www.openstreetmap.org/">OpenStreetMap</a></li>
-        <li><a href="https://leafletjs.com/">Leaflet.js</a></li>
-        <li>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML5</a>
-        </li>
-        <li>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-            >JavaScript</a
-          >
-        </li>
-      </ul>
+            <div class="mb-16">
+                <h2 class="text-2xl font-semibold mb-6">Casi d'Uso</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="font-semibold mb-2">Link Rapidi alle Mappe</h3>
+                        <p class="text-gray-600">Perfetto per condividere posizioni in chat, email o documentazione</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="font-semibold mb-2">Integrazione di Sistema</h3>
+                        <p class="text-gray-600">Ideale per strumenti di geolocalizzazione IP e diagnostica di rete</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="font-semibold mb-2">Embedding per Siti Web</h3>
+                        <p class="text-gray-600">Alternativa leggera alle soluzioni di mappatura complesse</p>
+                    </div>
+                </div>
+            </div>
 
-      <h2>Features</h2>
-      <ul>
-        <li>Easy to use: simple iframe implementation</li>
-        <li>Customizable: ability to specify coordinates</li>
-        <li>Lightweight: fast loading without slowing down your site</li>
-        <li>Responsive: adapts to screens of all sizes</li>
-      </ul>
+            <div class="bg-white p-8 rounded-lg shadow-sm mb-16">
+                <h2 class="text-2xl font-semibold mb-6">Caratteristiche</h2>
+                <ul class="grid md:grid-cols-2 gap-4">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Nessuna chiave API richiesta
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Implementazione istantanea
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Leggero e veloce
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Responsive su mobile
+                    </li>
+                </ul>
+            </div>
+        </main>
     </div>
-    <p><a href="https://github.com/1zkn/coordmap">GitHub Repository</a></p>
-    <div class="separator"></div>
 
-    <div id="italiano" class="language-section">
-      <h1>Coordmap.com</h1>
-      <p>
-        Coordmap.com è un servizio di embedding di mappe che semplifica
-        l'integrazione di mappe interattive nei siti web. Puoi aggiungere mappe
-        personalizzate utilizzando un semplice iframe.
-      </p>
-
-      <h2>Come Funziona</h2>
-      <p>Il processo è semplice:</p>
-      <ol>
-        <li>Scegli le coordinate della mappa (latitudine e longitudine)</li>
-        <li>Inserisci le coordinate nell'URL speciale</li>
-        <li>Copia e incolla il codice iframe nel tuo sito</li>
-      </ol>
-
-      <h2>Esempio di Utilizzo</h2>
-      <p>
-        Per incorporare una mappa centrata su latitudine 41.9028 e longitudine
-        12.4964 (Roma), usa questo codice:
-      </p>
-      <div class="example">
-        <code>
-          &lt;iframe src="https://coordmap.com/o/41.9028,12.4964" width="600"
-          height="450" style="border:0;" allowfullscreen=""
-          loading="lazy"&gt;&lt;/iframe&gt;
-        </code>
-      </div>
-
-      <h2>Tecnologie Utilizzate</h2>
-      <ul>
-        <li><a href="https://www.openstreetmap.org/">OpenStreetMap</a></li>
-        <li><a href="https://leafletjs.com/">Leaflet.js</a></li>
-        <li>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML5</a>
-        </li>
-        <li>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-            >JavaScript</a
-          >
-        </li>
-      </ul>
-
-      <h2>Caratteristiche</h2>
-      <ul>
-        <li>Facile da usare: utilizzo di un semplice iframe</li>
-        <li>Personalizzabile: possibilità di specificare le coordinate</li>
-        <li>Leggero: caricamento rapido senza rallentare il sito</li>
-        <li>Responsive: adattamento a schermi di tutte le dimensioni</li>
-      </ul>
-    </div>
-    <p><a href="https://github.com/1zkn/coordmap">GitHub Repository</a></p>
-    <div class="contact">
-      <p>
-        Contact:
-        <a href="https://twitter.com/hi1zkn" target="_blank"
-          >hi1zkn on Twitter</a
-        >|<p>kevin@zkn.app</p>
-      </p>
-    </div>
-  </body>
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center border-t border-gray-200">
+        <div class="mb-4">
+            <a href="https://github.com/1zkn/coordmap" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700">
+                View on GitHub
+            </a>
+        </div>
+        <div class="text-gray-600">
+            <p>Created by <a href="https://twitter.com/hi1zkn" class="text-blue-600 hover:text-blue-800">@hi1zkn</a></p>
+            <p>Contact: kevin@zkn.app</p>
+        </div>
+    </footer>
+</body>
 </html>
