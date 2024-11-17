@@ -15,7 +15,7 @@ export default function launchMap(coords) {
 }
 
 function addElements() {
-  document.title = "CoordMap - OpenStreetMap";
+  document.title = "map.zkn.app CoordMap - OpenStreetMap";
 }
 
 function initializeMap(config = mapCoord) {
@@ -27,7 +27,7 @@ function initializeMap(config = mapCoord) {
   let marker = L.marker([config.lat, config.long]).addTo(map);
   marker
     .bindPopup(
-      `<p>latitudine: ${config.lat} <br>longitudine: ${config.long}</p>`
+      `<p>latitude: ${config.lat} <br>longitude: ${config.long}</p>`
     )
     .openPopup();
 
